@@ -1,6 +1,33 @@
 
 pim TiendaOnline {
 
+    modelClass Producto {
+        nombre : Text
+        precio : Number
+        stock : Number
+        disponible : Bool
+    }
+
+    modelClass Cliente {
+        nombre : Text
+        email : Text
+        edad : Number
+    }
+
+    modelClass Pedido {
+        numero : Number
+        total : Number
+        estado : Text
+        fecha : Date
+    }
+
+    modelClass Factura {
+        numero : Number
+        total : Number
+        estado : Text
+        fecha : Date
+    }
+
     endpoint GET /productos {
         summary  : "Listar todos los productos"
         params   : none

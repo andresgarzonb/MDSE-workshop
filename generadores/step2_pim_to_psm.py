@@ -86,21 +86,33 @@ SCHEMAS = {
     ],
 }
 
+def generate_schemas(model, lineas):
+    modelClasses = model.modelClasses
+    for mc in modelClasses:
+        lineas.append(f"    schema {mc.name} {{")
+        for field in mc.fields:
+            print(f"field {field}")
+            lineas.append(f"        {field.name} : {PYTHON_TYPES[field.type]}")
+        lineas.append("    }")
+        lineas.append("")
+            
 
 def generar_psm(pim_model, ruta_salida: str):
     lineas = []
     lineas.append("")
     lineas.append(f"psm fastapi {pim_model.name} {{")
     lineas.append("")
+    
+    generate_schemas(pim_model, lineas)
 
-    # Schemas Pydantic
-    for schema_name, fields in SCHEMAS.items():
-        lineas.append(f"    schema {schema_name} {{")
-        for fname, ftype in fields:
-            padding = max(1, 14 - len(fname))
-            lineas.append(f"        {fname}{' ' * padding}: {ftype}")
-        lineas.append("    }")
-        lineas.append("")
+    # # Schemas Pydantic
+    # for schema_name, fields in SCHEMAS.items():
+    #     lineas.append(f"    schema {schema_name} {{")
+    #     for fname, ftype in fields:
+    #         padding = max(1, 14 - len(fname))
+    #         lineas.append(f"        {fname}{' ' * padding}: {ftype}")
+    #     lineas.append("    }")
+    #     lineas.append("")
 
     # Routes
     for ep in pim_model.endpoints:

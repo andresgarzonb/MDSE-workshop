@@ -10,7 +10,7 @@ from datetime import datetime
 class Producto(BaseModel):
     nombre        : str
     precio        : float
-    stock         : int
+    stock         : float
     disponible    : bool
 
     class Config:
@@ -27,7 +27,7 @@ class Producto(BaseModel):
 class Cliente(BaseModel):
     nombre        : str
     email         : str
-    edad          : int
+    edad          : float
 
     class Config:
         json_schema_extra = {
@@ -40,7 +40,7 @@ class Cliente(BaseModel):
 
 
 class Pedido(BaseModel):
-    numero        : int
+    numero        : float
     total         : float
     estado        : str
     fecha         : datetime
@@ -57,7 +57,7 @@ class Pedido(BaseModel):
 
 
 class Factura(BaseModel):
-    numero        : int
+    numero        : float
     total         : float
     estado        : str
     fecha         : datetime

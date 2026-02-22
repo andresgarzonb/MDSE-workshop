@@ -50,6 +50,7 @@ def run():
     print("\n📋 PASO 1 — Leyendo Requisitos")
     mm_req = metamodel_from_file(os.path.join(modelos, "req_grammar.tx"))
     req    = mm_req.model_from_file(os.path.join(modelos, "requirements.req"))
+    print(f"req_model {req.resources[0].fields[0].type}")
     print(f"   API '{req.name}': {len(req.resources)} recursos")
     for r in req.resources:
         ops = [op.name for op in r.operations]
@@ -63,6 +64,7 @@ def run():
     mm_pim = metamodel_from_file(os.path.join(modelos, "pim_grammar.tx"))
     pim    = mm_pim.model_from_file(os.path.join(modelos, "pim.api"))
     print(f"   {len(pim.endpoints)} endpoints en el PIM")
+    print(f"   {len(pim.modelClasses)} modelClasses en el PIM")
 
     print("\n🔁 M2M: PIM → PSM FastAPI")
     paso2.generar_psm(pim, os.path.join(modelos, "psm_fastapi.api"))

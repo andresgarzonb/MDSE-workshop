@@ -2,30 +2,30 @@
 psm fastapi TiendaOnline {
 
     schema Producto {
-        nombre        : str
-        precio        : float
-        stock         : int
-        disponible    : bool
+        nombre : str
+        precio : float
+        stock : float
+        disponible : bool
     }
 
     schema Cliente {
-        nombre        : str
-        email         : str
-        edad          : int
+        nombre : str
+        email : str
+        edad : float
     }
 
     schema Pedido {
-        numero        : int
-        total         : float
-        estado        : str
-        fecha         : datetime
+        numero : float
+        total : float
+        estado : str
+        fecha : datetime
     }
 
     schema Factura {
-        numero        : int
-        total         : float
-        estado        : str
-        fecha         : datetime
+        numero : float
+        total : float
+        estado : str
+        fecha : datetime
     }
 
     route GET "/productos" {

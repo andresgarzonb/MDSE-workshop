@@ -36,18 +36,28 @@ SUMMARIES = {
     "eliminar":   "Eliminar un {singular}",
 }
 
+def generate_model_class(lineas, model):    
+    for resource in model.resources:
+        lineas.append(f"    modelClass {resource.name} {{")
+        for field in resource.fields: 
+            lineas.append(f"        {field.name} : {field.type}")
+        lineas.append(f"    }}")
+        lineas.append("")
 
 def generar_pim(req_model, ruta_salida: str):
     lineas = []
     lineas.append("")
     lineas.append(f"pim {req_model.name} {{")
     lineas.append("")
+    
+    generate_model_class(lineas, req_model)
+    
 
     for resource in req_model.resources:
         nombre     = resource.name                     # Producto
         ruta_base  = f"/{nombre.lower()}s"             # /productos
         singular   = nombre.lower()                    # producto
-        plural     = f"{nombre.lower()}s"              # productos
+        plural     = f"{nombre.lower()}s"              # productos    
 
         print(f"   • {nombre}: {[op.name for op in resource.operations]}")
 
