@@ -137,6 +137,19 @@ El modelo generó código, y el código generó documentación.
 
 ---
 
+### Crear imágenes
+
+```bash
+#Crear archivo .dot
+textx generate modelos/psm_fastapi.api --grammar modelos/psm_grammar.tx --target dot
+# Convertir a PNG
+dot -Tpng -O modelos/psm_fastapi.dot
+
+```
+
+
+textx generate modelos/psm_fastapi.api --grammar modelos/psm_grammar.tx --target dot
+
 ### Cierre — conectar con el ejemplo anterior
 > "En el ejemplo anterior, el mismo modelo de Producto
 > generaba clases Python Y tablas SQL.
