@@ -1,0 +1,84 @@
+// ============================================================
+// NIVEL 1 — PIM (Platform Independent Model)
+// ============================================================
+// Generado automáticamente desde requirements.req (M2M)
+// Las operaciones abstractas se convierten en endpoints
+// con métodos HTTP, parámetros y tipos de respuesta.
+// Sigue sin saber si iremos a FastAPI, Flask, Express...
+// ============================================================
+
+pim TiendaOnline {
+
+    endpoint GET /productos {
+        summary  : "Listar todos los productos"
+        params   : none
+        response : List[Producto]
+    }
+
+    endpoint GET /productos/{id} {
+        summary  : "Obtener un producto por ID"
+        params   : id:Number
+        response : Producto
+    }
+
+    endpoint POST /productos {
+        summary  : "Crear un nuevo producto"
+        params   : body:Producto
+        response : Producto
+    }
+
+    endpoint PUT /productos/{id} {
+        summary  : "Actualizar un producto existente"
+        params   : id:Number, body:Producto
+        response : Producto
+    }
+
+    endpoint DELETE /productos/{id} {
+        summary  : "Eliminar un producto"
+        params   : id:Number
+        response : Message
+    }
+
+    endpoint GET /clientes {
+        summary  : "Listar todos los clientes"
+        params   : none
+        response : List[Cliente]
+    }
+
+    endpoint GET /clientes/{id} {
+        summary  : "Obtener un cliente por ID"
+        params   : id:Number
+        response : Cliente
+    }
+
+    endpoint POST /clientes {
+        summary  : "Crear un nuevo cliente"
+        params   : body:Cliente
+        response : Cliente
+    }
+
+    endpoint DELETE /clientes/{id} {
+        summary  : "Eliminar un cliente"
+        params   : id:Number
+        response : Message
+    }
+
+    endpoint GET /pedidos {
+        summary  : "Listar todos los pedidos"
+        params   : none
+        response : List[Pedido]
+    }
+
+    endpoint GET /pedidos/{id} {
+        summary  : "Obtener un pedido por ID"
+        params   : id:Number
+        response : Pedido
+    }
+
+    endpoint POST /pedidos {
+        summary  : "Crear un nuevo pedido"
+        params   : body:Pedido
+        response : Pedido
+    }
+
+}

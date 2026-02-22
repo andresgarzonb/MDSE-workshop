@@ -1,0 +1,33 @@
+
+api TiendaOnline {
+
+    resource Producto {
+        operations: listar, obtener, crear, actualizar, eliminar
+        fields {
+            nombre    : Text
+            precio    : Number
+            stock     : Number
+            disponible: Bool
+        }
+    }
+
+    resource Cliente {
+        operations: listar, obtener, crear, eliminar
+        fields {
+            nombre : Text
+            email  : Text
+            edad   : Number
+        }
+    }
+
+    resource Pedido {
+        operations: listar, obtener, crear
+        fields {
+            numero : Number
+            total  : Number
+            estado : Text
+            fecha  : Date
+        }
+    }
+
+}

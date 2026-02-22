@@ -1,0 +1,119 @@
+// ============================================================
+// NIVEL 2 — PSM FastAPI (Platform Specific Model)
+// ============================================================
+// Generado automáticamente desde pim.api (M2M)
+// Los tipos abstractos se mapean a tipos FastAPI/Python:
+//   Number      → int / float
+//   Text        → str
+//   Bool        → bool
+//   Date        → datetime
+//   List[X]     → List[X]  (Pydantic)
+//   Message     → dict
+// Los endpoints reciben decoradores y status codes concretos.
+// ============================================================
+
+psm fastapi TiendaOnline {
+
+    schema Producto {
+        nombre    : str
+        precio    : float
+        stock     : int
+        disponible: bool
+    }
+
+    schema Cliente {
+        nombre : str
+        email  : str
+        edad   : int
+    }
+
+    schema Pedido {
+        numero : int
+        total  : float
+        estado : str
+        fecha  : datetime
+    }
+
+    route GET "/productos" {
+        summary    : "Listar todos los productos"
+        response   : List[Producto]
+        status     : 200
+    }
+
+    route GET "/productos/{producto_id}" {
+        summary    : "Obtener un producto por ID"
+        path_param : producto_id:int
+        response   : Producto
+        status     : 200
+    }
+
+    route POST "/productos" {
+        summary    : "Crear un nuevo producto"
+        body       : Producto
+        response   : Producto
+        status     : 201
+    }
+
+    route PUT "/productos/{producto_id}" {
+        summary    : "Actualizar un producto existente"
+        path_param : producto_id:int
+        body       : Producto
+        response   : Producto
+        status     : 200
+    }
+
+    route DELETE "/productos/{producto_id}" {
+        summary    : "Eliminar un producto"
+        path_param : producto_id:int
+        response   : dict
+        status     : 200
+    }
+
+    route GET "/clientes" {
+        summary    : "Listar todos los clientes"
+        response   : List[Cliente]
+        status     : 200
+    }
+
+    route GET "/clientes/{cliente_id}" {
+        summary    : "Obtener un cliente por ID"
+        path_param : cliente_id:int
+        response   : Cliente
+        status     : 200
+    }
+
+    route POST "/clientes" {
+        summary    : "Crear un nuevo cliente"
+        body       : Cliente
+        response   : Cliente
+        status     : 201
+    }
+
+    route DELETE "/clientes/{cliente_id}" {
+        summary    : "Eliminar un cliente"
+        path_param : cliente_id:int
+        response   : dict
+        status     : 200
+    }
+
+    route GET "/pedidos" {
+        summary    : "Listar todos los pedidos"
+        response   : List[Pedido]
+        status     : 200
+    }
+
+    route GET "/pedidos/{pedido_id}" {
+        summary    : "Obtener un pedido por ID"
+        path_param : pedido_id:int
+        response   : Pedido
+        status     : 200
+    }
+
+    route POST "/pedidos" {
+        summary    : "Crear un nuevo pedido"
+        body       : Pedido
+        response   : Pedido
+        status     : 201
+    }
+
+}

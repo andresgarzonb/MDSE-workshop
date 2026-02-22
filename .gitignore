@@ -1,0 +1,32 @@
+# Entornos virtuales (El equivalente a node_modules)
+venv/
+.venv/
+env/
+bin/
+include/
+lib/
+share/
+pyvenv.cfg
+
+# Caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Variables de entorno (¡Muy importante en FastAPI!)
+.env
+.env.*
+! .env.example
+
+# Archivos de logs
+*.log
+
+# IDEs
+.vscode/
+.idea/
+.DS_Store
+
+# Pruebas (Opcional, si usas pytest-cov)
+.pytest_cache/
+.coverage
+htmlcov/
