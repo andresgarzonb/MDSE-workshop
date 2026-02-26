@@ -1,0 +1,124 @@
+
+pim TiendaOnline {
+
+    modelClass Producto {
+        nombre : Text
+        precio : Number
+        stock : Number
+        disponible : Bool
+    }
+
+    modelClass Cliente {
+        nombre : Text
+        email : Text
+        edad : Number
+    }
+
+    modelClass Pedido {
+        numero : Number
+        total : Number
+        estado : Text
+        fecha : Date
+    }
+
+    modelClass Factura {
+        id : Number
+        cliente : Text
+        producto : Text
+        cantidad : Number
+        Pedido : Number
+        fecha : Date
+        total : Number
+    }
+
+    endpoint GET /productos {
+        summary  : "Listar todos los productos"
+        params   : none
+        response : List[Producto]
+    }
+
+    endpoint GET /productos/{id} {
+        summary  : "Obtener un producto por ID"
+        params   : id:Number
+        response : Producto
+    }
+
+    endpoint POST /productos {
+        summary  : "Crear un nuevo producto"
+        params   : body:Producto
+        response : Producto
+    }
+
+    endpoint PUT /productos/{id} {
+        summary  : "Actualizar un producto existente"
+        params   : id:Number, body:Producto
+        response : Producto
+    }
+
+    endpoint DELETE /productos/{id} {
+        summary  : "Eliminar un producto"
+        params   : id:Number
+        response : Message
+    }
+
+    endpoint GET /clientes {
+        summary  : "Listar todos los clientes"
+        params   : none
+        response : List[Cliente]
+    }
+
+    endpoint GET /clientes/{id} {
+        summary  : "Obtener un cliente por ID"
+        params   : id:Number
+        response : Cliente
+    }
+
+    endpoint POST /clientes {
+        summary  : "Crear un nuevo cliente"
+        params   : body:Cliente
+        response : Cliente
+    }
+
+    endpoint DELETE /clientes/{id} {
+        summary  : "Eliminar un cliente"
+        params   : id:Number
+        response : Message
+    }
+
+    endpoint GET /pedidos {
+        summary  : "Listar todos los pedidos"
+        params   : none
+        response : List[Pedido]
+    }
+
+    endpoint GET /pedidos/{id} {
+        summary  : "Obtener un pedido por ID"
+        params   : id:Number
+        response : Pedido
+    }
+
+    endpoint POST /pedidos {
+        summary  : "Crear un nuevo pedido"
+        params   : body:Pedido
+        response : Pedido
+    }
+
+    endpoint GET /facturas {
+        summary  : "Listar todos los facturas"
+        params   : none
+        response : List[Factura]
+    }
+
+    endpoint GET /facturas/{id} {
+        summary  : "Obtener un factura por ID"
+        params   : id:Number
+        response : Factura
+    }
+
+    endpoint POST /facturas {
+        summary  : "Crear un nuevo factura"
+        params   : body:Factura
+        response : Factura
+    }
+
+}
